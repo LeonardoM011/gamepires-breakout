@@ -6,13 +6,11 @@ GameManager::~GameManager () {
     SDL_Quit ();
 }
 
-int GameManager::start() {
+void GameManager::start() {
     init ();
 
-    return 0;
 }
 
-int GameManager::init() {
+void GameManager::init() {
     ASSERT_THAT(!SDL_Init (SDL_INIT_VIDEO), "SDL failed to initialize");
-    return 0;
 }

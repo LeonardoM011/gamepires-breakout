@@ -1,11 +1,16 @@
 #pragma once
-#include "Game.h"
+#include <SDL.h>
+#include "Assert.h"
+
+// EXTERN FUNCTIONS - for use inside main.cpp
+extern void start();
+extern void running(double delta);
 
 class GameManager {
 public:
 	GameManager ();
 	~GameManager ();
-	int start();
+	void start();
 private:
-	int init();
+	void init();
 };

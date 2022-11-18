@@ -1,5 +1,8 @@
 #pragma once
-#include "Game.h"
+#include <SDL.h>
+#include "Window/WindowManager.h"
+#include "Assert.h"
+
 
 class Renderer {
 public:

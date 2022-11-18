@@ -107,6 +107,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Game\Logging\Log.h" />
+    <ClInclude Include="src\Game\Assert.h" />
     <ClInclude Include="src\Game\Renderer\Renderer.h" />
     <ClInclude Include="src\Game\Game.h" />
     <ClInclude Include="src\Game\GameManager.h" />

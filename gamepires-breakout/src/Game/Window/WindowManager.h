@@ -1,5 +1,7 @@
 #pragma once
-#include "Game.h"
+#include <string>
+#include <SDL.h>
+#include "Assert.h"
 
 class WindowManager {
 public:
