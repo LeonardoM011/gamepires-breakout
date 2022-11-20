@@ -6,4 +6,6 @@ Renderer::Renderer (WindowManager &window) {
 	ASSERT_THAT (s_Renderer == NULL, "SDL Renderer failed to create");
 }
 
-Renderer::~Renderer () {}
+Renderer::~Renderer () {
+	SDL_DestroyRenderer(s_Renderer);
+}

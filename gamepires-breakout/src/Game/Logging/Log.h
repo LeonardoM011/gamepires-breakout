@@ -20,20 +20,25 @@
 #define RESET_BOLD_MODE	"\x1B[22m"
 // ---- ----
 
-#define LOG_ERROR(msg)	std::cout << \
+#define LOG_FAILED(msg)	std::cerr << \
 						std::format("{:%F %OH:%OM:%OS}", std::chrono::zoned_time(std::chrono::current_zone(), std::chrono::system_clock::now())) \
-						<< " [" << COLOR_RED << "FAILED" << COLOR_RESET << "] " <<  msg << std::endl;
+						<< " [" << COLOR_RED << "FAILED" << COLOR_RESET << "] " <<  msg << std::endl
 
 #define LOG_INFO(msg)	std::cout << \
 						std::format("{:%F %OH:%OM:%OS}", std::chrono::zoned_time(std::chrono::current_zone(), std::chrono::system_clock::now())) \
-						<< " [" << COLOR_GREEN << "  OK  " << COLOR_RESET << "] " <<  msg << std::endl;
+						<< " [" << COLOR_CYAN << " INFO " << COLOR_RESET << "] " <<  msg << std::endl
+
+#define LOG_OK(msg)		std::cout << \
+						std::format("{:%F %OH:%OM:%OS}", std::chrono::zoned_time(std::chrono::current_zone(), std::chrono::system_clock::now())) \
+						<< " [" << COLOR_GREEN << "  OK  " << COLOR_RESET << "] " <<  msg << std::endl
 
 #define LOG_WARN(msg)	std::cout << \
 						std::format("{:%F %OH:%OM:%OS}", std::chrono::zoned_time(std::chrono::current_zone(), std::chrono::system_clock::now())) \
-						<< " [" << COLOR_YELLOW << " WARN " << COLOR_RESET << "] " <<  msg << std::endl;
+						<< " [" << COLOR_YELLOW << " WARN " << COLOR_RESET << "] " <<  msg << std::endl
 
 #else
-#define LOG_ERROR(msg)
+#define LOG_FAILED(msg)
 #define LOG_INFO(msg)
+#define LOG_OK(msg)
 #define LOG_WARN(msg)
 #endif

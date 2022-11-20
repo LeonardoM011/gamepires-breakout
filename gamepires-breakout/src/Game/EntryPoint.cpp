@@ -1,5 +1,5 @@
 #pragma once
-#include "GameManager.h"
+#include "GameManager/GameManager.h"
 
 // EXTERN FUNCTIONS - for use inside main.cpp
 extern void main_program();

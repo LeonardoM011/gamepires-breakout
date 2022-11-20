@@ -18,7 +18,7 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\GameManager.cpp">
+    <ClCompile Include="src\Game\GameManager\GameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\EntryPoint.cpp">
@@ -30,9 +30,12 @@
     <ClCompile Include="src\Game\Renderer\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Sprite\Sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Game\GameManager.h">
+    <ClInclude Include="src\Game\GameManager\GameManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Game.h">
@@ -50,5 +53,13 @@
     <ClInclude Include="src\Game\Logging\Log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\Sprite\Sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\assets\test.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
