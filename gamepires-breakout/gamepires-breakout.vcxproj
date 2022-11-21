@@ -77,8 +77,8 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>rmdir "$(SolutionDir)bin\$(Platform)-$(Configuration)\assets" /Q /S &amp;
-xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\assets" /E /H /C /I</Command>
+      <Command>rmdir "$(SolutionDir)bin\$(Platform)-$(Configuration)\src" /Q /S &amp;
+xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\src\assets" /E /H /C /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -105,8 +105,8 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>rmdir "$(SolutionDir)bin\$(Platform)-$(Configuration)\assets" /Q /S &amp;
-xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\assets" /E /H /C /I</Command>
+      <Command>rmdir "$(SolutionDir)bin\$(Platform)-$(Configuration)\src" /Q /S &amp;
+xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\src\assets" /E /H /C /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -116,17 +116,6 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
     <ClCompile Include="src\Game\GameManager\GameManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Game\Window\WindowManager.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\vendors\sdl-image\VisualC\SDL_image.vcxproj">
-      <Project>{2bd5534e-00e2-4bea-ac96-d9a92ea24696}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\vendors\sdl2\VisualC\SDLmain\SDLmain.vcxproj">
-      <Project>{da956fd3-e142-46f2-9dd5-c78bebb56b7a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\vendors\sdl2\VisualC\SDL\SDL.vcxproj">
-      <Project>{81ce8daf-ebb2-4761-8e45-b71abcca8c68}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Sprite\Sprite.h" />
@@ -144,6 +133,17 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </DeploymentContent>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\vendors\sdl2-image\VisualC\SDL_image.vcxproj">
+      <Project>{2bd5534e-00e2-4bea-ac96-d9a92ea24696}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\vendors\sdl2\VisualC\SDLmain\SDLmain.vcxproj">
+      <Project>{da956fd3-e142-46f2-9dd5-c78bebb56b7a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\vendors\sdl2\VisualC\SDL\SDL.vcxproj">
+      <Project>{81ce8daf-ebb2-4761-8e45-b71abcca8c68}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
