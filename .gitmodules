@@ -1,4 +1,0 @@
-[submodule "vendors/sdl2"]
-	path = vendors/sdl2
-	url = https://github.com/libsdl-org/SDL.git
-	branch = release-2.24.x
