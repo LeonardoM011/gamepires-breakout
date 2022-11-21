@@ -1,6 +1,8 @@
 [submodule "vendors/sdl2"]
 	path = vendors/sdl2
 	url = https://github.com/LeonardoM011/SDL.git
+	branch = release-2.24.x
 [submodule "vendors/sdl2-image"]
 	path = vendors/sdl2-image
 	url = https://github.com/LeonardoM011/SDL_image.git
+	branch = release-2.6.x
