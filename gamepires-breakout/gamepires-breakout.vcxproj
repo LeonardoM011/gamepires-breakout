@@ -44,16 +44,18 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(SolutionDir)int\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)bin\int\$(ProjectName)\$(Platform)-$(Configuration)\</IntDir>
     <IncludePath>$(ProjectDir)src\;$(ProjectDir)src\Game\;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)vendors\sdl2\include;$(ExternalIncludePath)</ExternalIncludePath>
-    <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(SolutionDir)vendors\sdl2\include;$(SolutionDir)vendors;$(ExternalIncludePath)</ExternalIncludePath>
+    <LibraryPath>$(SolutionDir)bin\$(Platform)-$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)bin\$(Platform)-$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(SolutionDir)int\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)bin\int\$(ProjectName)\$(Platform)-$(Configuration)\</IntDir>
     <IncludePath>$(ProjectDir)src\;$(ProjectDir)src\Game\;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)vendors\sdl2\include;$(ExternalIncludePath)</ExternalIncludePath>
-    <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(SolutionDir)vendors\sdl2\include;$(SolutionDir)vendors;$(ExternalIncludePath)</ExternalIncludePath>
+    <LibraryPath>$(SolutionDir)bin\$(Platform)-$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)bin\$(Platform)-$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -75,8 +77,8 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>rmdir "$(SolutionDir)$(Platform)\$(Configuration)\assets" /Q /S &amp;
-xcopy "$(ProjectDir)src\assets" "$(SolutionDir)$(Platform)\$(Configuration)\assets" /E /H /C /I</Command>
+      <Command>rmdir "$(SolutionDir)bin\$(Platform)-$(Configuration)\assets" /Q /S &amp;
+xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\assets" /E /H /C /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -103,8 +105,8 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)$(Platform)\$(Configuration)\asse
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>rmdir "$(SolutionDir)$(Platform)\$(Configuration)\assets" /Q /S &amp;
-xcopy "$(ProjectDir)src\assets" "$(SolutionDir)$(Platform)\$(Configuration)\assets" /E /H /C /I</Command>
+      <Command>rmdir "$(SolutionDir)bin\$(Platform)-$(Configuration)\assets" /Q /S &amp;
+xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\assets" /E /H /C /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
