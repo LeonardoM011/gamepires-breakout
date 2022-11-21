@@ -116,6 +116,9 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)$(Platform)\$(Configuration)\asse
     <ClCompile Include="src\Game\Window\WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\vendors\sdl-image\VisualC\SDL_image.vcxproj">
+      <Project>{2bd5534e-00e2-4bea-ac96-d9a92ea24696}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\vendors\sdl2\VisualC\SDLmain\SDLmain.vcxproj">
       <Project>{da956fd3-e142-46f2-9dd5-c78bebb56b7a}</Project>
     </ProjectReference>
