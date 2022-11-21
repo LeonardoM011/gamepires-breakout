@@ -75,8 +75,8 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>rmdir "$(SolutionDir)$(Platform)\$(Configuration)\assets" /Q /S &amp;
+xcopy "$(ProjectDir)src\assets" "$(SolutionDir)$(Platform)\$(Configuration)\assets" /E /H /C /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -103,8 +103,8 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>rmdir "$(SolutionDir)$(Platform)\$(Configuration)\assets" /Q /S &amp;
+xcopy "$(ProjectDir)src\assets" "$(SolutionDir)$(Platform)\$(Configuration)\assets" /E /H /C /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
