@@ -110,6 +110,7 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Game\Object\Object.cpp" />
     <ClCompile Include="src\Game\Sprite\Sprite.cpp" />
     <ClCompile Include="src\Game\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Game\EntryPoint.cpp" />
@@ -118,6 +119,8 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
     <ClCompile Include="src\Game\Window\WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Game\Input\Input.h" />
+    <ClInclude Include="src\Game\Object\Object.h" />
     <ClInclude Include="src\Game\Sprite\Sprite.h" />
     <ClInclude Include="src\Game\Logging\Log.h" />
     <ClInclude Include="src\Game\Assert.h" />

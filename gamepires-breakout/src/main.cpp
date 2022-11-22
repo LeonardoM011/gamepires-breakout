@@ -9,6 +9,6 @@ void start () {
 }
 
 void running (double delta) {
-
+	//LOG_INFO(delta);
 }
 

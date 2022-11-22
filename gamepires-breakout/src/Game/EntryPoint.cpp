@@ -6,7 +6,7 @@ extern void main_program();
 
 
 int main(int argc, char* argv[]) {
-    main_program ();
+    ::main_program ();
 
     GameManager gameManager;
     gameManager.start();

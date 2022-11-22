@@ -2,6 +2,9 @@
 #include <SDL.h>
 #include "Window/WindowManager.h"
 #include "Assert.h"
+#include "Renderer/Renderer.h"
+#include "Sprite/Sprite.h"
+#include "Input/Input.h"
 
 // EXTERN FUNCTIONS - for use inside main.cpp
 extern void start();
@@ -15,10 +18,15 @@ public:
 	void update();
 private:
 	void init();
+	void calcDelta();
+
 	WindowManager *s_Window;
-
+	Renderer *s_Renderer;
 	Sprite *sprite;
-	SDL_Event e;
+	Input *s_Input;
 
-	bool isRunning = true;
+	bool s_IsRunning = true;
+	Uint64 s_TimeNow = 0;
+	Uint64 s_TimeLast = 0;
+	double s_DeltaTime = 0;
 };
