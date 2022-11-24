@@ -14,14 +14,15 @@ GameManager::~GameManager () {
 void GameManager::start() {
     init ();
 
-    sprite = new Sprite();
-    sprite->loadMedia(s_Renderer, "src/assets/test.png");
+    s_Object = new Object();
+    s_Object->loadMedia(s_Renderer, "src/assets/test.png");
 
     ::start();
     update();
 }
 
 void GameManager::update() {
+    calcDelta();
     while (s_IsRunning) {
         s_Renderer->prepare();
 
@@ -35,8 +36,10 @@ void GameManager::update() {
         calcDelta();
         ::running(s_DeltaTime);
 
+        s_Object->move(0.1 * s_DeltaTime, 0);
+        s_Object->render(s_Renderer);
 
-        sprite->render(s_Renderer);
+
         s_Renderer->update();
     }
 }

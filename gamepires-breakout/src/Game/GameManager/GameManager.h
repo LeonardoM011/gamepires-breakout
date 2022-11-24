@@ -3,8 +3,8 @@
 #include "Window/WindowManager.h"
 #include "Assert.h"
 #include "Renderer/Renderer.h"
-#include "Sprite/Sprite.h"
 #include "Input/Input.h"
+#include "Object/Object.h"
 
 // EXTERN FUNCTIONS - for use inside main.cpp
 extern void start();
@@ -20,10 +20,10 @@ private:
 	void init();
 	void calcDelta();
 
-	WindowManager *s_Window;
-	Renderer *s_Renderer;
-	Sprite *sprite;
-	Input *s_Input;
+	WindowManager *s_Window = nullptr;
+	Renderer *s_Renderer = nullptr;
+	Input *s_Input = nullptr;
+	Object *s_Object = nullptr;
 
 	bool s_IsRunning = true;
 	Uint64 s_TimeNow = 0;

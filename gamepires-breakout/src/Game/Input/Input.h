@@ -12,6 +12,7 @@ public:
 		delete s_KeyDown;
 	}
 	void check() {
+		SDL_PumpEvents();
 		while(SDL_PollEvent(&s_Event) != 0) {
 			s_IsQuitRequested = s_Event.type == SDL_QUIT;
 		}

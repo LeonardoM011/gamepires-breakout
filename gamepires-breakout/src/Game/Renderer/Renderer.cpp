@@ -5,7 +5,7 @@ Renderer::Renderer (WindowManager *window) {
 	s_Renderer = SDL_CreateRenderer (window->getSDLWindow (), -1, SDL_RENDERER_ACCELERATED);
 	ASSERT_THAT (s_Renderer != NULL, "SDL Renderer failed to create");
 
-	SDL_SetRenderDrawColor(s_Renderer, 0xFF, 0xFF, 0x00, 0xFF);
+	SDL_SetRenderDrawColor(s_Renderer, RENDERER_COLOR);
 }
 
 Renderer::~Renderer () {
@@ -13,6 +13,7 @@ Renderer::~Renderer () {
 }
 
 void Renderer::prepare() {
+	SDL_SetRenderDrawColor(s_Renderer, RENDERER_COLOR);
 	SDL_RenderClear(s_Renderer);
 }
 

@@ -22,6 +22,25 @@ void Sprite::loadMedia(Renderer *renderer, std::string imagePath) {
 	LOG_OK("image " + imagePath + " successfully loaded");
 }
 
-void Sprite::render(Renderer *renderer) {
-	SDL_RenderCopy(renderer->getSDLRenderer(), s_Texture, NULL, NULL);
+void Sprite::render(Renderer *renderer,
+					int x,
+					int y,
+					int width,
+					int height,
+					SDL_Rect *clip,
+					double angle,
+					SDL_Point *center,
+					SDL_RendererFlip flip) {
+
+	if(!width) width = s_Width;
+	if(!height) height = s_Height;
+
+	SDL_Rect rect = {x, y, width, height};
+	SDL_RenderCopyEx(renderer->getSDLRenderer(),
+					 s_Texture,
+					 clip,
+					 &rect,
+					 angle,
+					 center,
+					 flip);
 }
