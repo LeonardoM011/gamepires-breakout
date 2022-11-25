@@ -3,6 +3,12 @@
 
 extern void start();
 extern void running(double delta);
+extern void exit();
+
+namespace Game {
+    extern int windowWidth;
+    extern int windowHeight;
+}
 
 GameManager::GameManager () {}
 
@@ -35,6 +41,7 @@ void GameManager::update() {
 
         m_Renderer->update();
     }
+    ::exit();
 }
 
 void GameManager::init() {
@@ -43,6 +50,8 @@ void GameManager::init() {
         LOG_WARN("linear texture filtering not enabled");
 
     m_Window = new WindowManager("Gamepires", 720, 480);
+    Game::windowHeight = 720;
+    Game::windowWidth = 480;
     m_Renderer = new Renderer(m_Window);
 
     Sprite::bindRenderer(m_Renderer);

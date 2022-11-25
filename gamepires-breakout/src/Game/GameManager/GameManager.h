@@ -16,6 +16,9 @@ public:
 	~GameManager ();
 	void start();
 	void update();
+
+	int getWindowWidth() const { return m_Window->getWidth(); }
+	int getWindowHeight() const { return m_Window->getHeight(); }
 private:
 	void init();
 	void calcDelta();

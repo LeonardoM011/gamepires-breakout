@@ -1,6 +1,8 @@
 #include "WindowManager.h"
 
-WindowManager::WindowManager (std::string title, int width, int height) {
+WindowManager::WindowManager (std::string title, int width, int height) :
+	m_Width(width),
+	m_Height(height) {
 	m_Window = SDL_CreateWindow (title.c_str (),
 								 SDL_WINDOWPOS_UNDEFINED,
 								 SDL_WINDOWPOS_UNDEFINED,
