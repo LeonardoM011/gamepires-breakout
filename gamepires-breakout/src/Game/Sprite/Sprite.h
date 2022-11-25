@@ -8,9 +8,8 @@ class Sprite {
 public:
 	Sprite();
 	~Sprite();
-	void loadMedia(Renderer *renderer, std::string imagePath);
-	void render(Renderer *renderer,
-				int x = 0,
+	void loadMedia(std::string imagePath);
+	void render(int x = 0,
 				int y = 0,
 				int width = NULL,
 				int height = NULL,
@@ -18,12 +17,15 @@ public:
 				double angle = 0,
 				SDL_Point *center = NULL,
 				SDL_RendererFlip flip = SDL_FLIP_NONE);
-	SDL_Texture *getSDLTexture() { return s_Texture; }
-	int getWidth() const { return s_Width; }
-	int getHeight() const { return s_Height; }
+	SDL_Texture *getSDLTexture() { return m_Texture; }
+	static void bindRenderer(Renderer *renderer) { s_Renderer = renderer; }
+	int getWidth() const { return m_Width; }
+	int getHeight() const { return m_Height; }
 protected:
-	SDL_Texture *s_Texture = NULL;
-	int s_Width = 0;
-	int s_Height = 0;
+	SDL_Texture *m_Texture = NULL;
+	int m_Width = 0;
+	int m_Height = 0;
+
+	static Renderer *s_Renderer;
 };
 

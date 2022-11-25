@@ -3,18 +3,18 @@
 
 Object::Object(float x, float y) :
 	Sprite(),
-	s_X(x),
-	s_Y(y) {}
+	m_X(x),
+	m_Y(y) {}
 
 Object::~Object() {
 
 }
 
 void Object::move(float x, float y) {
-	s_X += x;
-	s_Y += y;
+	m_X += x;
+	m_Y += y;
 }
 
-void Object::render(Renderer *renderer) {
-	Sprite::render(renderer, round(s_X), round(s_Y), s_Width, s_Height);
+void Object::render() {
+	Sprite::render((int)round(m_X), (int)round(m_Y), m_Width, m_Height);
 }

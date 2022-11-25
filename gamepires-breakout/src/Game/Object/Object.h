@@ -6,9 +6,9 @@ public:
 	Object(float x = 0, float y = 0);
 	~Object();
 	void move(float x, float y);
-	void render(Renderer *renderer);
+	void render();
 private:
-	float s_X;
-	float s_Y;
+	float m_X;
+	float m_Y;
 };
 

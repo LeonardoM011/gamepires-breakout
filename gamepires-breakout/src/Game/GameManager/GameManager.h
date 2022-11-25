@@ -20,13 +20,12 @@ private:
 	void init();
 	void calcDelta();
 
-	WindowManager *s_Window = nullptr;
-	Renderer *s_Renderer = nullptr;
-	Input *s_Input = nullptr;
-	Object *s_Object = nullptr;
+	WindowManager *m_Window = nullptr;
+	Renderer *m_Renderer = nullptr;
+	Input *m_Input = nullptr;
 
-	bool s_IsRunning = true;
-	Uint64 s_TimeNow = 0;
-	Uint64 s_TimeLast = 0;
-	double s_DeltaTime = 0;
+	bool m_IsRunning = true;
+	Uint64 m_TimeNow = 0;
+	Uint64 m_TimeLast = 0;
+	double m_DeltaTime = 0;
 };

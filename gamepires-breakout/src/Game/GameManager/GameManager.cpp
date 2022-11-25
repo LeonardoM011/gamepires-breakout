@@ -14,33 +14,26 @@ GameManager::~GameManager () {
 void GameManager::start() {
     init ();
 
-    s_Object = new Object();
-    s_Object->loadMedia(s_Renderer, "src/assets/test.png");
-
     ::start();
     update();
 }
 
 void GameManager::update() {
     calcDelta();
-    while (s_IsRunning) {
-        s_Renderer->prepare();
+    while (m_IsRunning) {
+        m_Renderer->prepare();
 
-        s_Input->check();
+        m_Input->check();
 
-        s_IsRunning = !s_Input->isQuitRequested();
+        m_IsRunning = !m_Input->isQuitRequested();
 
-        if(s_Input->isKeyPressed(SDL_SCANCODE_A))
+        if(m_Input->isKeyPressed(SDL_SCANCODE_A))
             LOG_INFO("A");
 
         calcDelta();
-        ::running(s_DeltaTime);
+        ::running(m_DeltaTime);
 
-        s_Object->move(0.1 * s_DeltaTime, 0);
-        s_Object->render(s_Renderer);
-
-
-        s_Renderer->update();
+        m_Renderer->update();
     }
 }
 
@@ -49,16 +42,18 @@ void GameManager::init() {
     if(!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1"))
         LOG_WARN("linear texture filtering not enabled");
 
-    s_Window = new WindowManager("Gamepires", 720, 480);
-    s_Renderer = new Renderer(s_Window);
+    m_Window = new WindowManager("Gamepires", 720, 480);
+    m_Renderer = new Renderer(m_Window);
+
+    Sprite::bindRenderer(m_Renderer);
 
     ASSERT_THAT(IMG_Init(IMG_INIT_PNG), "failed to initialize sdl img png");
 
-    s_Input = new Input();
+    m_Input = new Input();
 }
 
 void GameManager::calcDelta() {
-    s_TimeLast = s_TimeNow;
-    s_TimeNow = SDL_GetPerformanceCounter();
-    s_DeltaTime = (double)((s_TimeNow - s_TimeLast) * 1000 / (double)SDL_GetPerformanceFrequency());
+    m_TimeLast = m_TimeNow;
+    m_TimeNow = SDL_GetPerformanceCounter();
+    m_DeltaTime = (double)((m_TimeNow - m_TimeLast) * 1000 / (double)SDL_GetPerformanceFrequency());
 }

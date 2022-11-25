@@ -8,8 +8,8 @@ public:
 	WindowManager (std::string title, int width, int height);
 	~WindowManager ();
 	void update();
-	SDL_Window *getSDLWindow () { return s_Window; }
+	SDL_Window *getSDLWindow () { return m_Window; }
 private:
-	SDL_Window *s_Window = NULL;
+	SDL_Window *m_Window = NULL;
 };
 
