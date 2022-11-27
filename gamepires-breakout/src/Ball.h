@@ -86,7 +86,7 @@ void checkBallPlayerCollision() {
 	}
 
 	if(pow(ball->getHeight() / 2.f, 2) >= pow(closestPoint.x - center.x, 2) + pow(closestPoint.y - center.y, 2)) {
-		ballVec = normalize(Vector2f(-(- center.x + player->getX() + player->getWidth() / 2.f) / player->getWidth(), -0.5f));
+		ballVec = normalize(Vector2f(-(- center.x + player->getX() + player->getWidth() / 2.f) / player->getWidth(), -0.3f));
 	}
 
 }

@@ -6,3 +6,6 @@
 	path = vendors/sdl2-image
 	url = https://github.com/LeonardoM011/SDL_image.git
 	branch = release-2.6.x
+[submodule "vendors/tinyxml2"]
+	path = vendors/tinyxml2
+	url = https://github.com/LeonardoM011/tinyxml2.git
