@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 std::shared_ptr<Sprite> playerSprite;
 std::shared_ptr<Object> player;

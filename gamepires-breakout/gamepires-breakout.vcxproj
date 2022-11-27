@@ -119,6 +119,7 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
     <ClCompile Include="src\Game\Window\WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Ball.h" />
     <ClInclude Include="src\Game\Input\Input.h" />
     <ClInclude Include="src\Game\Object\Object.h" />
     <ClInclude Include="src\Game\Sprite\Sprite.h" />

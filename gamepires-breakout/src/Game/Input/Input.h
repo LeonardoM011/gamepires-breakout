@@ -18,9 +18,11 @@ public:
 	static SDL_Point getMousePos() {
 		int x;
 		int y;
-		SDL_GetMouseState(&x, &y);
+		s_Button = SDL_GetMouseState(&x, &y);
 		return SDL_Point(x, y);
 	}
+
+	static Uint32 getMouseButton() { return s_Button; }
 
 	bool isQuitRequested() const { return m_IsQuitRequested; }
 
@@ -30,6 +32,7 @@ public:
 	}
 private:
 	SDL_Event m_Event;
+	static inline Uint32 s_Button = 0;
 	bool m_IsQuitRequested;
 };
 

@@ -4,8 +4,6 @@
 std::shared_ptr<Sprite> wallSprite;
 std::vector<std::shared_ptr<Object>> wall;
 
-SDL_Rect wallCol = SDL_Rect(Game::windowWidth - 44, 0, 32, Game::windowHeight);
-
 void initWall() {
 	wallSprite.reset(new Sprite());
 	wallSprite->loadMedia("src/assets/brick_white.png");
