@@ -49,16 +49,16 @@ void GameManager::init() {
     if(!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1"))
         LOG_WARN("linear texture filtering not enabled");
 
-    m_Window = new WindowManager("Gamepires", 720, 480);
-    Game::windowHeight = 720;
-    Game::windowWidth = 480;
-    m_Renderer = new Renderer(m_Window);
+    m_Window.reset(new WindowManager("Gamepires", WINDOW_SIZE));
+    Game::windowWidth = m_Window->getWidth();
+    Game::windowHeight = m_Window->getHeight();
+    m_Renderer.reset(new Renderer(m_Window));
 
     Sprite::bindRenderer(m_Renderer);
 
     ASSERT_THAT(IMG_Init(IMG_INIT_PNG), "failed to initialize sdl img png");
 
-    m_Input = new Input();
+    m_Input.reset(new Input());
 }
 
 void GameManager::calcDelta() {

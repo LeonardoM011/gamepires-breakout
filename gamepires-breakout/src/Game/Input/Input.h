@@ -6,11 +6,8 @@ public:
 	Input() {
 		m_IsQuitRequested = false;
 		m_Event = SDL_Event();
-		m_KeyDown = SDL_GetKeyboardState(NULL);
 	}
-	~Input() {
-		delete m_KeyDown;
-	}
+	~Input() {}
 	void check() {
 		SDL_PumpEvents();
 		while(SDL_PollEvent(&m_Event) != 0) {
@@ -18,14 +15,21 @@ public:
 		}
 	}
 
+	static SDL_Point getMousePos() {
+		int x;
+		int y;
+		SDL_GetMouseState(&x, &y);
+		return SDL_Point(x, y);
+	}
+
 	bool isQuitRequested() const { return m_IsQuitRequested; }
 
-	bool isKeyPressed(SDL_Scancode scancode) const {
-		return m_KeyDown[scancode];
+	static bool isKeyPressed(SDL_Scancode scancode) {
+		const Uint8 *keyDown = SDL_GetKeyboardState(NULL);
+		return keyDown[scancode];
 	}
 private:
 	SDL_Event m_Event;
-	const Uint8 *m_KeyDown;
 	bool m_IsQuitRequested;
 };
 

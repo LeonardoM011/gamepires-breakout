@@ -2,13 +2,14 @@
 #include <sdl2-image/SDL_image.h>
 #include "Renderer/Renderer.h"
 
-Renderer *Sprite::s_Renderer = nullptr;
+std::shared_ptr<Renderer> Sprite::s_Renderer = nullptr;
 
 Sprite::Sprite() {
 }
 
 Sprite::~Sprite() {
 	SDL_DestroyTexture(m_Texture);
+	m_Texture = NULL;
 }
 
 void Sprite::loadMedia(std::string imagePath) {

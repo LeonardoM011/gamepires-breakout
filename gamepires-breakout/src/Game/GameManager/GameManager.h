@@ -10,6 +10,8 @@
 extern void start();
 extern void running(double delta);
 
+#define WINDOW_SIZE 1080, 720
+
 class GameManager {
 public:
 	GameManager ();
@@ -23,9 +25,9 @@ private:
 	void init();
 	void calcDelta();
 
-	WindowManager *m_Window = nullptr;
-	Renderer *m_Renderer = nullptr;
-	Input *m_Input = nullptr;
+	std::shared_ptr<WindowManager> m_Window = nullptr;
+	std::shared_ptr<Renderer> m_Renderer = nullptr;
+	std::unique_ptr<Input> m_Input = nullptr;
 
 	bool m_IsRunning = true;
 	Uint64 m_TimeNow = 0;

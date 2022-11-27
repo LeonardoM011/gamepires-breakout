@@ -65,9 +65,48 @@
     <ClInclude Include="src\Game\Input\Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Wall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\assets\test.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\test.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\ball_blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\ball_white.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\brick_blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\brick_green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\brick_purple.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\brick_red.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\brick_white.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\brick_yellow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\player.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\powerup.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

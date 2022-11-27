@@ -18,14 +18,16 @@ public:
 				SDL_Point *center = NULL,
 				SDL_RendererFlip flip = SDL_FLIP_NONE);
 	SDL_Texture *getSDLTexture() { return m_Texture; }
-	static void bindRenderer(Renderer *renderer) { s_Renderer = renderer; }
+	static void bindRenderer(std::shared_ptr<Renderer> renderer) { s_Renderer.swap(renderer); }
 	int getWidth() const { return m_Width; }
 	int getHeight() const { return m_Height; }
+	void setWidth(int width) { m_Width = width; }
+	void setHeight(int height) { m_Height = height; }
 protected:
 	SDL_Texture *m_Texture = NULL;
 	int m_Width = 0;
 	int m_Height = 0;
 
-	static Renderer *s_Renderer;
+	static std::shared_ptr<Renderer> s_Renderer;
 };
 

@@ -14,6 +14,7 @@ WindowManager::WindowManager (std::string title, int width, int height) :
 
 WindowManager::~WindowManager () {
 	SDL_DestroyWindow(m_Window);
+	m_Window = NULL;
 }
 
 void WindowManager::update() {

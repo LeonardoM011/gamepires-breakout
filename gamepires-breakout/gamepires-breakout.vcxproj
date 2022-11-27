@@ -128,14 +128,27 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
     <ClInclude Include="src\Game\Game.h" />
     <ClInclude Include="src\Game\GameManager\GameManager.h" />
     <ClInclude Include="src\Game\Window\WindowManager.h" />
+    <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\Wall.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="src\assets\ball_blue.png" />
+    <Image Include="src\assets\ball_white.png" />
+    <Image Include="src\assets\brick_blue.png" />
+    <Image Include="src\assets\brick_green.png" />
+    <Image Include="src\assets\brick_purple.png" />
+    <Image Include="src\assets\brick_red.png" />
+    <Image Include="src\assets\brick_white.png" />
+    <Image Include="src\assets\brick_yellow.png" />
+    <Image Include="src\assets\player.png" />
+    <Image Include="src\assets\powerup.png" />
     <Image Include="src\assets\test.bmp">
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </DeploymentContent>
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </DeploymentContent>
     </Image>
+    <Image Include="src\assets\test.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\vendors\sdl2-image\VisualC\SDL_image.vcxproj">
