@@ -46,14 +46,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IntDir>$(SolutionDir)bin\int\$(ProjectName)\$(Platform)-$(Configuration)\</IntDir>
     <IncludePath>$(ProjectDir)src\;$(ProjectDir)src\Game\;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)vendors\sdl2\include;$(SolutionDir)vendors;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>$(SolutionDir)vendors\sdl2\include;$(SolutionDir)vendors;$(SolutionDir)vendors\sdl2-mixer\include;$(ExternalIncludePath)</ExternalIncludePath>
     <LibraryPath>$(SolutionDir)bin\$(Platform)-$(Configuration)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Platform)-$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IntDir>$(SolutionDir)bin\int\$(ProjectName)\$(Platform)-$(Configuration)\</IntDir>
     <IncludePath>$(ProjectDir)src\;$(ProjectDir)src\Game\;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)vendors\sdl2\include;$(SolutionDir)vendors;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>$(SolutionDir)vendors\sdl2\include;$(SolutionDir)vendors;$(SolutionDir)vendors\sdl2-mixer\include;$(ExternalIncludePath)</ExternalIncludePath>
     <LibraryPath>$(SolutionDir)bin\$(Platform)-$(Configuration)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Platform)-$(Configuration)\</OutDir>
   </PropertyGroup>

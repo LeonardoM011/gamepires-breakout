@@ -9,7 +9,3 @@
 [submodule "vendors/tinyxml2"]
 	path = vendors/tinyxml2
 	url = https://github.com/LeonardoM011/tinyxml2.git
-[submodule "vendors/sdl-mixer"]
-	path = vendors/sdl2-mixer
-	url = https://github.com/libsdl-org/SDL_mixer.git
-	branch = release-2.6.x
