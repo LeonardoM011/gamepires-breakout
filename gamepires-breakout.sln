@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDL2main", "vendors\sdl2\Vi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDL2_image", "vendors\sdl2-image\VisualC\SDL_image.vcxproj", "{2BD5534E-00E2-4BEA-AC96-D9A92EA24696}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tinyxml2", "vendors\tinyxml2\vs\tinyxml2.vcxproj", "{7C72653A-E6F8-4584-B553-DE3A0AEE4356}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{2BD5534E-00E2-4BEA-AC96-D9A92EA24696}.Release|x64.Build.0 = Release|x64
 		{2BD5534E-00E2-4BEA-AC96-D9A92EA24696}.Release|x86.ActiveCfg = Release|Win32
 		{2BD5534E-00E2-4BEA-AC96-D9A92EA24696}.Release|x86.Build.0 = Release|Win32
+		{7C72653A-E6F8-4584-B553-DE3A0AEE4356}.Debug|x64.ActiveCfg = Debug|x64
+		{7C72653A-E6F8-4584-B553-DE3A0AEE4356}.Debug|x64.Build.0 = Debug|x64
+		{7C72653A-E6F8-4584-B553-DE3A0AEE4356}.Debug|x86.ActiveCfg = Debug|Win32
+		{7C72653A-E6F8-4584-B553-DE3A0AEE4356}.Debug|x86.Build.0 = Debug|Win32
+		{7C72653A-E6F8-4584-B553-DE3A0AEE4356}.Release|x64.ActiveCfg = Release|x64
+		{7C72653A-E6F8-4584-B553-DE3A0AEE4356}.Release|x64.Build.0 = Release|x64
+		{7C72653A-E6F8-4584-B553-DE3A0AEE4356}.Release|x86.ActiveCfg = Release|Win32
+		{7C72653A-E6F8-4584-B553-DE3A0AEE4356}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -117,9 +117,12 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
     <ClCompile Include="src\Game\GameManager\GameManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Game\Window\WindowManager.cpp" />
+    <ClCompile Include="src\Game\XMLParser\XMLParser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Background.h" />
     <ClInclude Include="src\Ball.h" />
+    <ClInclude Include="src\Bricks.h" />
     <ClInclude Include="src\Game\Input\Input.h" />
     <ClInclude Include="src\Game\Object\Object.h" />
     <ClInclude Include="src\Game\Sprite\Sprite.h" />
@@ -131,6 +134,7 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
     <ClInclude Include="src\Game\Window\WindowManager.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Wall.h" />
+    <ClInclude Include="src\Game\XMLParser\XMLParser.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\assets\ball_blue.png" />
@@ -161,6 +165,12 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
     <ProjectReference Include="..\vendors\sdl2\VisualC\SDL\SDL.vcxproj">
       <Project>{81ce8daf-ebb2-4761-8e45-b71abcca8c68}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\vendors\tinyxml2\vs\tinyxml2.vcxproj">
+      <Project>{7c72653a-e6f8-4584-b553-de3a0aee4356}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="src\assets\level1.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

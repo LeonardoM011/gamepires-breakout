@@ -3,6 +3,7 @@
 #include "Logging/Log.h"
 #include "Object/Object.h"
 #include "Input/Input.h"
+#include "XMLParser/XMLParser.h"
 
 // GLOBAL VARIABLES
 namespace Game {

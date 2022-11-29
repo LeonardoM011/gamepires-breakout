@@ -58,6 +58,64 @@ void checkBallBorderCollision() {
 	}
 }
 
+void checkBallBrickCollision() {
+	if(bricks.empty())
+		return;
+
+	int left = (int)round(ball->getX());
+	int right = (int)round(ball->getX() + ball->getWidth());
+	int top = (int)round(ball->getY());
+	int bottom = (int)round(ball->getY() + ball->getHeight());
+	SDL_Point center = SDL_Point((int)round(ball->getX() + ball->getWidth() / 2.f),
+								 (int)round(ball->getY() + ball->getHeight() / 2.f));
+
+	std::pair<float, std::shared_ptr<Object>> closestBrick = std::pair(99999.f, nullptr);
+	int brickIndex = 0;
+	int i = 0;
+	for(auto o : bricks) {
+		SDL_Point brickCenter = SDL_Point((int)round(o->getX() + o->getWidth() / 2.f),
+										  (int)round(o->getY() + o->getHeight() / 2.f));
+
+		float distancesqr = pow(brickCenter.x - center.x, 2) + pow(brickCenter.y - center.y, 2);
+		if(closestBrick.first > distancesqr) {
+			closestBrick = std::pair(distancesqr, o);
+			brickIndex = i;
+		}
+		i++;
+	}
+	if(closestBrick.second == nullptr)
+		return;
+
+	SDL_Point closestPoint;
+	std::shared_ptr<Object> brick = closestBrick.second;
+
+	int leftBrick = (int)round(brick->getX());
+	int rightBrick = (int)round(brick->getX() + brick->getWidth());
+	int topBrick = (int)round(brick->getY());
+	int bottomBrick = (int)round(brick->getY() + brick->getHeight());
+
+	if(center.x < leftBrick) {
+		closestPoint.x = leftBrick;
+	} else if(center.x < rightBrick) {
+		closestPoint.x = center.x;
+	} else {
+		closestPoint.x = rightBrick;
+	}
+
+	if(center.y < topBrick) {
+		closestPoint.y = topBrick;
+	} else if(center.y < bottomBrick) {
+		closestPoint.y = center.x;
+	} else {
+		closestPoint.y = bottomBrick;
+	}
+
+	if(pow(ball->getHeight() / 2.f, 2) >= pow(closestPoint.x - center.x, 2) + pow(closestPoint.y - center.y, 2)) {
+		bricks[brickIndex].reset();
+		bricks.erase(bricks.begin() + brickIndex);
+	}
+}
+
 void checkBallPlayerCollision() {
 	SDL_Point closestPoint;
 
@@ -94,6 +152,7 @@ void checkBallPlayerCollision() {
 void checkBallCollision() {
 	checkBallBorderCollision();
 	checkBallPlayerCollision();
+	checkBallBrickCollision();
 }
 
 void ballBeforeStarting() {
