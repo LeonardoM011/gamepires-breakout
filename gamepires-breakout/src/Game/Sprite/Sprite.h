@@ -6,9 +6,8 @@
 
 class Sprite {
 public:
-	Sprite();
+	Sprite(std::string imagePath);
 	~Sprite();
-	void loadMedia(std::string imagePath);
 	void render(int x = 0,
 				int y = 0,
 				int width = NULL,

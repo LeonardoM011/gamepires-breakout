@@ -3,7 +3,7 @@
 #include <tinyxml2/tinyxml2.h>
 #include "Assert.h"
 
-struct Brick {
+struct BrickXML {
 	char id;
 	std::string texture;
 	int hitPoints;
@@ -21,7 +21,7 @@ public:
 	int getRowSpacing();
 	int getColumnSpacing();
 	std::string getBackgroundTexture();
-	std::vector<Brick> getBrickTypes();
+	std::vector<BrickXML> getBrickTypes();
 	std::vector<std::vector<char>> getLayout();
 private:
 	tinyxml2::XMLDocument m_Doc;

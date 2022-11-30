@@ -13,6 +13,7 @@ namespace Game {
 GameManager::GameManager () {}
 
 GameManager::~GameManager () {
+    Mix_Quit();
     IMG_Quit();
     SDL_Quit();
 }
@@ -57,6 +58,8 @@ void GameManager::init() {
     Sprite::bindRenderer(m_Renderer);
 
     ASSERT_THAT(IMG_Init(IMG_INIT_PNG), "failed to initialize sdl img png");
+
+    ASSERT_THAT(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) >= 0, "SDL_mixer could not initialize");
 
     m_Input.reset(new Input());
 }

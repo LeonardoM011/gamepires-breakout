@@ -2,6 +2,9 @@
 #include <vector>
 #include <random>
 
+#define BALL_TEXTURE_PATH "src/assets/textures/ball_white.png"
+#define BARRIER_HIT_SOUND "src/assets/soundfx/sound_hit_barrier.wav"
+
 struct Vector2f {
 	float x;
 	float y;
@@ -13,9 +16,8 @@ Vector2f normalize(Vector2f vec) {
 	return Vector2f(vec.x / len, vec.y / len);
 }
 
-std::shared_ptr<Sprite> ballSprite;
 std::shared_ptr<Object> ball;
-float ballSpeed = 0.5f;
+float ballSpeed = 10.0f;
 Vector2f ballVec = Vector2f(0.f, 0.f);
 
 bool isStarted = false;
@@ -23,10 +25,7 @@ bool isStarted = false;
 void initBall() {
 	srand((unsigned int)time(NULL));
 
-	wallSprite.reset(new Sprite());
-	wallSprite->loadMedia("src/assets/ball_white.png");
-
-	ball.reset(new Object(wallSprite));
+	ball.reset(new Object(loadedTextures[BALL_TEXTURE_PATH]));
 }
 
 void checkBallBorderCollision() {
@@ -43,18 +42,22 @@ void checkBallBorderCollision() {
 	if(right > rightBorder) {
 		ball->moveX((float)(rightBorder - right));
 		ballVec.x = -ballVec.x;
+		loadedSounds[BARRIER_HIT_SOUND]->playSound();
 	}
 	if(left < leftBorder) {
 		ball->moveX((float)(leftBorder - left));
 		ballVec.x = -ballVec.x;
+		loadedSounds[BARRIER_HIT_SOUND]->playSound();
 	}
 	if(bottom > bottomBorder) {
 		ball->moveY((float)(bottomBorder - bottom));
 		ballVec.y = -ballVec.y;
+		loadedSounds[BARRIER_HIT_SOUND]->playSound();
 	}
 	if(top < topBorder) {
 		ball->moveY((float)(topBorder - top));
 		ballVec.y = -ballVec.y;
+		loadedSounds[BARRIER_HIT_SOUND]->playSound();
 	}
 }
 
@@ -62,57 +65,74 @@ void checkBallBrickCollision() {
 	if(bricks.empty())
 		return;
 
-	int left = (int)round(ball->getX());
-	int right = (int)round(ball->getX() + ball->getWidth());
-	int top = (int)round(ball->getY());
-	int bottom = (int)round(ball->getY() + ball->getHeight());
-	SDL_Point center = SDL_Point((int)round(ball->getX() + ball->getWidth() / 2.f),
-								 (int)round(ball->getY() + ball->getHeight() / 2.f));
+	float left = ball->getX();
+	float right = ball->getX() + ball->getWidth();
+	float top = ball->getY();
+	float bottom = ball->getY() + ball->getHeight();
+	float radius = ball->getWidth() / 2.f;
+	Vector2f center = Vector2f(ball->getX() + ball->getWidth() / 2.f,
+							   ball->getY() + ball->getHeight() / 2.f);
 
-	std::pair<float, std::shared_ptr<Object>> closestBrick = std::pair(99999.f, nullptr);
-	int brickIndex = 0;
 	int i = 0;
-	for(auto o : bricks) {
-		SDL_Point brickCenter = SDL_Point((int)round(o->getX() + o->getWidth() / 2.f),
-										  (int)round(o->getY() + o->getHeight() / 2.f));
+	for(auto brick : bricks) {
+		Vector2f closestPoint;
 
-		float distancesqr = pow(brickCenter.x - center.x, 2) + pow(brickCenter.y - center.y, 2);
-		if(closestBrick.first > distancesqr) {
-			closestBrick = std::pair(distancesqr, o);
-			brickIndex = i;
+		float leftBrick = brick->getX();
+		float rightBrick = brick->getX() + brick->getWidth();
+		float topBrick = brick->getY();
+		float bottomBrick = brick->getY() + brick->getHeight();
+
+		if(center.y < topBrick) {
+			closestPoint.y = topBrick;
+		} else if(center.y < bottomBrick) {
+			closestPoint.y = center.y;
+		} else {
+			closestPoint.y = bottomBrick;
+		}
+
+		if(center.x < leftBrick) {
+			closestPoint.x = leftBrick;
+		} else if(center.x < rightBrick) {
+			closestPoint.x = center.x;
+		} else {
+			closestPoint.x = rightBrick;
+		}
+
+		if(pow(ball->getHeight() / 2.f, 2) >= pow(closestPoint.x - center.x, 2) + pow(closestPoint.y - center.y, 2)) {
+			bricks[i]->hit();
+
+			float diffX = center.x - closestPoint.x;
+			float diffY = center.y - closestPoint.y;
+			float diffSqrd = sqrt(pow(diffX, 2) + pow(diffY, 2));
+			if(abs(diffX) < abs(diffY) ) {
+				if(diffY > 0) {
+					ball->moveY(radius - abs(diffSqrd));
+				} else {
+					ball->moveY(-(radius - abs(diffSqrd)));
+				}
+				ballVec.y = -ballVec.y;
+			} else {
+				if(diffX > 0) {
+					ball->moveX(radius - abs(diffSqrd));
+				} else {
+					ball->moveX(-(radius - abs(diffSqrd)));
+				}
+				ballVec.x = -ballVec.x;
+			}
+
+
+			if(bricks[i]->didBreak()) {
+				bricks[i]->playBreakSound();
+				bricks[i].reset();
+				bricks.erase(bricks.begin() + i);
+				break;
+			}
+
+			bricks[i]->playHitSound();
+
+
 		}
 		i++;
-	}
-	if(closestBrick.second == nullptr)
-		return;
-
-	SDL_Point closestPoint;
-	std::shared_ptr<Object> brick = closestBrick.second;
-
-	int leftBrick = (int)round(brick->getX());
-	int rightBrick = (int)round(brick->getX() + brick->getWidth());
-	int topBrick = (int)round(brick->getY());
-	int bottomBrick = (int)round(brick->getY() + brick->getHeight());
-
-	if(center.x < leftBrick) {
-		closestPoint.x = leftBrick;
-	} else if(center.x < rightBrick) {
-		closestPoint.x = center.x;
-	} else {
-		closestPoint.x = rightBrick;
-	}
-
-	if(center.y < topBrick) {
-		closestPoint.y = topBrick;
-	} else if(center.y < bottomBrick) {
-		closestPoint.y = center.x;
-	} else {
-		closestPoint.y = bottomBrick;
-	}
-
-	if(pow(ball->getHeight() / 2.f, 2) >= pow(closestPoint.x - center.x, 2) + pow(closestPoint.y - center.y, 2)) {
-		bricks[brickIndex].reset();
-		bricks.erase(bricks.begin() + brickIndex);
 	}
 }
 
@@ -179,5 +199,4 @@ void renderBall(double delta) {
 
 void freeBall() {
 	ball.reset();
-	ballSprite.reset();
 }

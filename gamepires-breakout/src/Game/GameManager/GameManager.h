@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL.h>
+#include <SDL_mixer.h>
 #include "Window/WindowManager.h"
 #include "Assert.h"
 #include "Renderer/Renderer.h"

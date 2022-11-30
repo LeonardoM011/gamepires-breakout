@@ -4,15 +4,7 @@
 
 std::shared_ptr<Renderer> Sprite::s_Renderer = nullptr;
 
-Sprite::Sprite() {
-}
-
-Sprite::~Sprite() {
-	SDL_DestroyTexture(m_Texture);
-	m_Texture = NULL;
-}
-
-void Sprite::loadMedia(std::string imagePath) {
+Sprite::Sprite(std::string imagePath) {
 	LOG_INFO("loading image " + imagePath);
 	SDL_Surface *mediaSurface = IMG_Load(imagePath.c_str());
 	ASSERT_THAT(mediaSurface != NULL, "image " + imagePath + " failed to load");
@@ -23,6 +15,11 @@ void Sprite::loadMedia(std::string imagePath) {
 	m_Height = mediaSurface->h;
 	SDL_FreeSurface(mediaSurface);
 	LOG_OK("image " + imagePath + " successfully loaded");
+}
+
+Sprite::~Sprite() {
+	SDL_DestroyTexture(m_Texture);
+	m_Texture = NULL;
 }
 
 void Sprite::render(int x,

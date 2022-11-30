@@ -1,12 +1,9 @@
 #pragma once
 
-extern std::shared_ptr<XMLParser> curLevel;
-
 std::shared_ptr<Sprite> background;
 
 void initBackground() {
-	background.reset(new Sprite());
-	background->loadMedia(curLevel->getBackgroundTexture());
+	background.reset(new Sprite(curLevel->getBackgroundTexture()));
 }
 
 void renderBackground() {

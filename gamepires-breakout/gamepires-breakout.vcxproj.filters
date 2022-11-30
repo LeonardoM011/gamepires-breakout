@@ -42,6 +42,9 @@
     <ClCompile Include="src\Game\Sound\Sound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Brick\Brick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\GameManager\GameManager.h">
@@ -92,6 +95,9 @@
     <ClInclude Include="src\Game\Sound\Sound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\Brick\Brick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\assets\test.bmp">
@@ -130,8 +136,74 @@
     <Image Include="src\assets\powerup.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="src\assets\backgrounds\background_mountains.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\textures\ball_blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\textures\ball_white.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\textures\brick_blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\textures\brick_green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\textures\brick_purple.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\textures\brick_red.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\textures\brick_white.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\textures\brick_yellow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\textures\player.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\assets\textures\powerup.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="src\assets\level1.xml" />
+    <Xml Include="src\assets\levels\level1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="src\assets\soundfx\sound_bleep.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="src\assets\soundfx\sound_break.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="src\assets\soundfx\sound_break2.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="src\assets\soundfx\sound_hit_barrier.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="src\assets\soundfx\sound_hit1.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="src\assets\soundfx\sound_hit2.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="src\assets\soundfx\sound_wind.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="src\assets\soundfx\sound_winddown.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="src\assets\soundfx\sound_windup.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="src\assets\soundfx\sound_break1.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 <Level
-	RowCount="3"
-	ColumnCount="20"
+	RowCount="10"
+	ColumnCount="5"
 	RowSpacing="3"
 	ColumnSpacing="3"
 	BackgroundTexture="src/assets/backgrounds/background_mountains.png">
@@ -37,8 +37,15 @@
 			HitSound="src/assets/soundfx/sound_hit_barrier.wav" />
 	</BrickTypes>
 	<Bricks>
-		H H H H H H H H H H H H H H H H H H H H
-		M M I I M M _ _ M M M M _ _ M M I I M M
-		S S S S S S S S S S S S S S S S S S S S
+		H H _ _ _
+		_ _ _ _ _
+		_ _ _ _ _
+		_ _ _ _ _
+		_ _ _ _ _
+		_ _ _ H _
+		_ _ _ H _
+		_ _ _ H _
+		_ _ _ H _
+		H H H H _
 	</Bricks>
 </Level>

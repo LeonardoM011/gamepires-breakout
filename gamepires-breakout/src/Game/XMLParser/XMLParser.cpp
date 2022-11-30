@@ -40,11 +40,11 @@ std::string XMLParser::getBackgroundTexture() {
 	return std::string(res);
 }
 
-std::vector<Brick> XMLParser::getBrickTypes() {
+std::vector<BrickXML> XMLParser::getBrickTypes() {
 	tinyxml2::XMLElement* brickList = m_Root->FirstChildElement("BrickTypes")->FirstChildElement("BrickType");
-	std::vector<Brick> res;
+	std::vector<BrickXML> res;
 	while(brickList != nullptr) {
-		Brick brick;
+		BrickXML brick;
 
 		const char* id;
 		id = brickList->FindAttribute("Id")->Value();

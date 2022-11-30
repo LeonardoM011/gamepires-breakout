@@ -1,15 +1,14 @@
 #pragma once
 #include <vector>
 
-std::shared_ptr<Sprite> playerSprite;
+#define PLAYER_TEXTURE_PATH "src/assets/textures/player.png"
+
 std::shared_ptr<Object> player;
 
 const float playerSpeed = 0.4f;
 
 void initPlayer() {
-	playerSprite.reset(new Sprite());
-	playerSprite->loadMedia("src/assets/player.png");
-	player.reset(new Object(playerSprite, Game::windowWidth / 2.f - playerSprite->getWidth() / 2.f, Game::windowHeight - 64.f));
+	player.reset(new Object(loadedTextures[PLAYER_TEXTURE_PATH], Game::windowWidth / 2.f - loadedTextures[PLAYER_TEXTURE_PATH]->getWidth() / 2.f, Game::windowHeight - 64.f));
 }
 
 void followMouseAndMoveSlowly(double delta) {
@@ -45,5 +44,4 @@ void renderPlayer(double delta) {
 
 void freePlayer() {
 	player.reset();
-	playerSprite.reset();
 }

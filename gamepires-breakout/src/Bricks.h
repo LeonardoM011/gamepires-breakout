@@ -1,18 +1,9 @@
 #pragma once
 
-extern std::shared_ptr<XMLParser> curLevel;
-
-std::vector<std::pair<char, std::shared_ptr<Sprite>>> bricksSprite;
-std::vector<std::shared_ptr<Object>> bricks;
+std::vector<std::shared_ptr<Brick>> bricks;
 
 void initBricks() {
-	std::vector<Brick> brickTypes = curLevel->getBrickTypes();
-	for(Brick brick : brickTypes) {
-		std::shared_ptr<Sprite> sprite;
-		sprite.reset(new Sprite());
-		sprite->loadMedia(brick.texture);
-		bricksSprite.push_back(std::pair(brick.id, sprite));
-	}
+	std::vector<BrickXML> brickTypes = curLevel->getBrickTypes();
 
 	int leftBorder = 44;
 	int rightBorder = Game::windowWidth - 44;
@@ -35,16 +26,17 @@ void initBricks() {
 	float y = (float)(topBorder + rowSpacing);
 	for(auto row : layout) {
 		for(char c : row) {
-			for(Brick brick : brickTypes) {
+			for(BrickXML brick : brickTypes) {
 				if(c != brick.id) continue;
-				std::shared_ptr<Object> obj;
-				for(auto spr : bricksSprite) {
-					if(spr.first == brick.id) {
-						obj.reset(new Object(spr.second, (float)x, (float)y, (float)brickWidth, (float)brickHeight));
-						bricks.push_back(obj);
-					}
-				}
-
+				bricks.push_back(std::shared_ptr<Brick>(new Brick(loadedTextures[brick.texture],
+																  (float)x,
+																  (float)y,
+																  (float)brickWidth,
+																  (float)brickHeight,
+																  brick.hitPoints,
+																  loadedSounds[brick.hitSound],
+																  loadedSounds[brick.breakSound],
+																  brick.breakScore)));
 			}
 			x += columnSpacing + brickWidth;
 		}
@@ -60,12 +52,5 @@ void renderBricks() {
 }
 
 void freeBricks() {
-	for(int i = 0; i < bricks.size(); i++) {
-		bricks[i].reset();
-	}
 	bricks.clear();
-	for(int i = 0; i < bricksSprite.size(); i++) {
-		bricksSprite[i].second.reset();
-	}
-	bricksSprite.clear();
 }
