@@ -1,11 +1,13 @@
 #pragma once
 #include <SDL.h>
 #include <SDL_mixer.h>
+#include <SDL_ttf.h>
 #include "Window/WindowManager.h"
 #include "Assert.h"
 #include "Renderer/Renderer.h"
 #include "Input/Input.h"
 #include "Object/Object.h"
+#include "FontRenderer/Text.h"
 
 // EXTERN FUNCTIONS - for use inside main.cpp
 extern void start();

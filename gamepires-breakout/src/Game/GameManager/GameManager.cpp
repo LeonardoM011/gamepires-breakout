@@ -13,6 +13,7 @@ namespace Game {
 GameManager::GameManager () {}
 
 GameManager::~GameManager () {
+    TTF_Quit();
     Mix_Quit();
     IMG_Quit();
     SDL_Quit();
@@ -60,6 +61,11 @@ void GameManager::init() {
     ASSERT_THAT(IMG_Init(IMG_INIT_PNG), "failed to initialize sdl img png");
 
     ASSERT_THAT(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) >= 0, "SDL_mixer could not initialize");
+
+    ASSERT_THAT(TTF_Init() != -1, "SDL_ttf could not initialize");
+    Text::bindRenderer(m_Renderer);
+
+    Text::setDefaultFont("src/assets/fonts/SF Atarian System Bold.ttf", 24);
 
     m_Input.reset(new Input());
 }

@@ -1,0 +1,51 @@
+<Level
+	RowCount="10"
+	ColumnCount="5"
+	RowSpacing="3"
+	ColumnSpacing="3"
+	BackgroundTexture="src/assets/backgrounds/background_mountains.png">
+	<BrickTypes>
+		<!-- Soft Brick -->
+		<BrickType
+			Id="S"
+			Texture="src/assets/textures/brick_green.png"
+			HitPoints="1"
+			HitSound="src/assets/soundfx/sound_hit1.wav"
+			BreakSound="src/assets/soundfx/sound_break1.wav"
+			BreakScore="50" />
+		<!-- Medium Brick -->
+		<BrickType
+			Id="M"
+			Texture="src/assets/textures/brick_blue.png"
+			HitPoints="2"
+			HitSound="src/assets/soundfx/sound_hit1.wav"
+			BreakSound="src/assets/soundfx/sound_break1.wav"
+			BreakScore="100" />
+		<!-- Hard Brick -->
+		<BrickType
+			Id="H"
+			Texture="src/assets/textures/brick_red.png"
+			HitPoints="3"
+			HitSound="src/assets/soundfx/sound_hit1.wav"
+			BreakSound="src/assets/soundfx/sound_break2.wav"
+			BreakScore="150" />
+		<!-- Impenetrable Brick -->
+		<BrickType
+			Id="I"
+			Texture="src/assets/textures/brick_white.png"
+			HitPoints="Infinite"
+			HitSound="src/assets/soundfx/sound_hit_barrier.wav" />
+	</BrickTypes>
+	<Bricks>
+		_ _ _ _ _
+		_ _ _ _ _
+		_ _ _ _ _
+		_ _ _ _ _
+		_ _ _ _ _
+		_ _ M _ _
+		_ _ _ _ _
+		_ _ _ _ _
+		_ _ _ _ _
+		_ _ _ _ _
+	</Bricks>
+</Level>

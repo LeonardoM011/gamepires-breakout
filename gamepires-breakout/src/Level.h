@@ -7,6 +7,7 @@ void startLevel() {
 	initPlayer();
 	initBall();
 	initBricks();
+	initScoreboard();
 }
 
 void renderLevel(double delta) {
@@ -15,6 +16,7 @@ void renderLevel(double delta) {
 	renderPlayer(delta);
 	renderBall(delta);
 	renderBricks();
+	renderScoreboard();
 }
 
 void restartLevel() {
@@ -23,4 +25,5 @@ void restartLevel() {
 	freeWall();
 	freePlayer();
 	freeBricks();
+	freeScoreboard();
 }

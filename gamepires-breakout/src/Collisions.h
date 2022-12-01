@@ -2,6 +2,8 @@
 
 extern void restartLevel();
 extern void startLevel();
+extern std::shared_ptr<Text> scoreText;
+extern std::shared_ptr<Text> livesText;
 
 // PLAYER COLLISIONS
 void playerCheckCollision(double delta) {
@@ -47,10 +49,12 @@ void checkBallBorderCollision() {
 		if(--lives <= 0) {
 			loadedSounds[LOSE_ALL_SOUND]->playSound();
 			lives = MAX_PLAYER_LIVES;
+			points = 0;
 			restartLevel();
 			startLevel();
 		} else {
 			loadedSounds[LOSE_LIFE_SOUND]->playSound();
+			livesText->updateText("Lives: " + std::to_string(lives), SDL_Color(DEFAULT_FONT_COLOR));
 			freeBall();
 			initBall();
 		}
@@ -63,8 +67,18 @@ void checkBallBorderCollision() {
 }
 
 void checkBallBrickCollision() {
-	if(bricks.empty())
+	if(bricks.empty()) {
+		if(++level >= levels.size()) {
+			// WIN
+			level = 0;
+			return;
+		}
+		lives = MAX_PLAYER_LIVES;
+		points = 0;
+		restartLevel();
+		startLevel();
 		return;
+	}
 
 	float left = ball->getX();
 	float right = ball->getX() + ball->getWidth();
@@ -123,6 +137,8 @@ void checkBallBrickCollision() {
 
 
 			if(bricks[i]->didBreak()) {
+				points += bricks[i]->getScore();
+				scoreText->updateText("Score: " + std::to_string(points), SDL_Color(DEFAULT_FONT_COLOR));
 				bricks[i]->playBreakSound();
 				bricks[i].reset();
 				bricks.erase(bricks.begin() + i);

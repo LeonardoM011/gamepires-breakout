@@ -128,6 +128,7 @@ xcopy /S /Q /Y /F "$(SolutionDir)vendors\sdl2-ttf\lib\SDL2_ttf.dll" "$(SolutionD
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Game\Window\WindowManager.cpp" />
     <ClCompile Include="src\Game\XMLParser\XMLParser.cpp" />
+    <ClCompile Include="src\Game\FontRenderer\Text.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Collisions.h" />
@@ -147,8 +148,10 @@ xcopy /S /Q /Y /F "$(SolutionDir)vendors\sdl2-ttf\lib\SDL2_ttf.dll" "$(SolutionD
     <ClInclude Include="src\Game\Window\WindowManager.h" />
     <ClInclude Include="src\Level.h" />
     <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\Scoreboard.h" />
     <ClInclude Include="src\Wall.h" />
     <ClInclude Include="src\Game\XMLParser\XMLParser.h" />
+    <ClInclude Include="src\Game\FontRenderer\Text.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\assets\backgrounds\background_mountains.png" />

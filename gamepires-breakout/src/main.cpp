@@ -7,6 +7,7 @@
 #define DEFAULT_PLAYER_SPEED 0.4f
 #define MAX_PLAYER_LIVES 3
 #define PLAYER_BALL_CURVE -0.3f
+#define DEFAULT_FONT_COLOR 0, 0, 0
 
 #define PLAYER_TEXTURE_PATH "src/assets/textures/player.png"
 #define WALL_TEXTURE_PATH "src/assets/textures/brick_white.png"
@@ -32,6 +33,7 @@ std::shared_ptr<XMLParser> curLevel;
 #include "Player.h"
 #include "Ball.h"
 #include "Collisions.h"
+#include "Scoreboard.h"
 #include "Level.h"
 
 std::vector<std::string> texturePaths = {
@@ -60,8 +62,9 @@ std::vector<std::string> soundPaths = {
 };
 
 std::vector<std::string> levelPaths = {
-	"src/assets/levels/level1.xml",
-	"src/assets/levels/leveltest.xml"
+	"src/assets/levels/leveltesteasy.xml",
+	"src/assets/levels/leveltest.xml",
+	//"src/assets/levels/level1.xml"
 };
 
 void main_program() {

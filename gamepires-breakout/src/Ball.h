@@ -40,6 +40,7 @@ void ballBeforeStarting() {
 	ball->setY(player->getY() - ball->getWidth() - 1.f);
 	if(Input::getMouseButton() == SDL_BUTTON_LEFT) {
 		ballVec = normalize(Vector2f(((float)(std::rand() % 10) - 5.f), -15.f));
+		loadedSounds[START_LEVEL_SOUND]->playSound();
 		isStarted = true;
 	}
 	ball->render();

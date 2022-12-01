@@ -6,6 +6,7 @@
 #include "XMLParser/XMLParser.h"
 #include "Sound/Sound.h"
 #include "Brick/Brick.h"
+#include "FontRenderer/Text.h"
 
 // GLOBAL VARIABLES
 namespace Game {
