@@ -1,11 +1,11 @@
 #pragma once
 #include <vector>
 
-#define PLAYER_TEXTURE_PATH "src/assets/textures/player.png"
+extern void playerCheckCollision(double delta);
 
 std::shared_ptr<Object> player;
 
-const float playerSpeed = 0.4f;
+float playerSpeed = DEFAULT_PLAYER_SPEED;
 
 void initPlayer() {
 	player.reset(new Object(loadedTextures[PLAYER_TEXTURE_PATH], Game::windowWidth / 2.f - loadedTextures[PLAYER_TEXTURE_PATH]->getWidth() / 2.f, Game::windowHeight - 64.f));
@@ -22,20 +22,6 @@ void followMouseAndMoveSlowly(double delta) {
 	}
 }
 
-void playerCheckCollision(double delta) {
-	int rightBorder = Game::windowWidth - 44;
-	int leftBorder = 44;
-	int leftX = (int)round(player->getX());
-	int rightX = (int)round(player->getX() + player->getWidth());
-
-	if(rightX > rightBorder) {
-		player->moveX((float)(rightBorder - rightX));
-	}
-	if(leftX < leftBorder) {
-		player->moveX((float)(leftBorder - leftX));
-	}
-}
-
 void renderPlayer(double delta) {
 	followMouseAndMoveSlowly(delta);
 	playerCheckCollision(delta);
@@ -43,5 +29,6 @@ void renderPlayer(double delta) {
 }
 
 void freePlayer() {
+	playerSpeed = DEFAULT_PLAYER_SPEED;
 	player.reset();
 }

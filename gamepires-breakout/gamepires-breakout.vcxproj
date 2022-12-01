@@ -46,15 +46,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IntDir>$(SolutionDir)bin\int\$(ProjectName)\$(Platform)-$(Configuration)\</IntDir>
     <IncludePath>$(ProjectDir)src\;$(ProjectDir)src\Game\;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)vendors\sdl2\include;$(SolutionDir)vendors;$(SolutionDir)vendors\sdl2-mixer\include;$(ExternalIncludePath)</ExternalIncludePath>
-    <LibraryPath>$(SolutionDir)bin\$(Platform)-$(Configuration)\;$(SolutionDir)vendors\sdl2-mixer\lib\;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(SolutionDir)vendors\sdl2\include;$(SolutionDir)vendors;$(SolutionDir)vendors\sdl2-mixer\include;$(SolutionDir)vendors\sdl2-ttf\include;$(ExternalIncludePath)</ExternalIncludePath>
+    <LibraryPath>$(SolutionDir)bin\$(Platform)-$(Configuration)\;$(SolutionDir)vendors\sdl2-mixer\lib\;$(SolutionDir)vendors\sdl2-ttf\lib\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Platform)-$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IntDir>$(SolutionDir)bin\int\$(ProjectName)\$(Platform)-$(Configuration)\</IntDir>
     <IncludePath>$(ProjectDir)src\;$(ProjectDir)src\Game\;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)vendors\sdl2\include;$(SolutionDir)vendors;$(SolutionDir)vendors\sdl2-mixer\include;$(ExternalIncludePath)</ExternalIncludePath>
-    <LibraryPath>$(SolutionDir)bin\$(Platform)-$(Configuration)\;$(SolutionDir)vendors\sdl2-mixer\lib\;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(SolutionDir)vendors\sdl2\include;$(SolutionDir)vendors;$(SolutionDir)vendors\sdl2-mixer\include;$(SolutionDir)vendors\sdl2-ttf\include;$(ExternalIncludePath)</ExternalIncludePath>
+    <LibraryPath>$(SolutionDir)bin\$(Platform)-$(Configuration)\;$(SolutionDir)vendors\sdl2-mixer\lib\;$(SolutionDir)vendors\sdl2-ttf\lib\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Platform)-$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -70,7 +70,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>
@@ -81,7 +81,8 @@
 xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\src\assets" /E /H /C /I</Command>
     </PostBuildEvent>
     <PreLinkEvent>
-      <Command>xcopy /S /Q /Y /F "$(SolutionDir)vendors\sdl2-mixer\lib\SDL2_mixer.dll" "$(SolutionDir)bin\$(Platform)-$(Configuration)\SDL2_mixer.dll*"</Command>
+      <Command>xcopy /S /Q /Y /F "$(SolutionDir)vendors\sdl2-mixer\lib\SDL2_mixer.dll" "$(SolutionDir)bin\$(Platform)-$(Configuration)\SDL2_mixer.dll*" &amp;
+xcopy /S /Q /Y /F "$(SolutionDir)vendors\sdl2-ttf\lib\SDL2_ttf.dll" "$(SolutionDir)bin\$(Platform)-$(Configuration)\SDL2_ttf.dll*"</Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -101,7 +102,7 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>
@@ -112,7 +113,8 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
 xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\src\assets" /E /H /C /I</Command>
     </PostBuildEvent>
     <PreLinkEvent>
-      <Command>xcopy /S /Q /Y /F "$(SolutionDir)vendors\sdl2-mixer\lib\SDL2_mixer.dll" "$(SolutionDir)bin\$(Platform)-$(Configuration)\SDL2_mixer.dll*"</Command>
+      <Command>xcopy /S /Q /Y /F "$(SolutionDir)vendors\sdl2-mixer\lib\SDL2_mixer.dll" "$(SolutionDir)bin\$(Platform)-$(Configuration)\SDL2_mixer.dll*" &amp;
+xcopy /S /Q /Y /F "$(SolutionDir)vendors\sdl2-ttf\lib\SDL2_ttf.dll" "$(SolutionDir)bin\$(Platform)-$(Configuration)\SDL2_ttf.dll*"</Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -128,6 +130,7 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
     <ClCompile Include="src\Game\XMLParser\XMLParser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Collisions.h" />
     <ClInclude Include="src\Game\Brick\Brick.h" />
     <ClInclude Include="src\Game\Sound\Sound.h" />
     <ClInclude Include="src\Background.h" />
@@ -142,6 +145,7 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
     <ClInclude Include="src\Game\Game.h" />
     <ClInclude Include="src\Game\GameManager\GameManager.h" />
     <ClInclude Include="src\Game\Window\WindowManager.h" />
+    <ClInclude Include="src\Level.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Wall.h" />
     <ClInclude Include="src\Game\XMLParser\XMLParser.h" />
@@ -193,6 +197,7 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
   <ItemGroup>
     <Xml Include="src\assets\level1.xml" />
     <Xml Include="src\assets\levels\level1.xml" />
+    <Xml Include="src\assets\levels\leveltest.xml" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="src\assets\soundfx\sound_bleep.wav" />
@@ -202,6 +207,8 @@ xcopy "$(ProjectDir)src\assets" "$(SolutionDir)bin\$(Platform)-$(Configuration)\
     <Media Include="src\assets\soundfx\sound_hit1.wav" />
     <Media Include="src\assets\soundfx\sound_hit2.wav" />
     <Media Include="src\assets\soundfx\sound_hit_barrier.wav" />
+    <Media Include="src\assets\soundfx\sound_lost.wav" />
+    <Media Include="src\assets\soundfx\sound_player_hit.wav" />
     <Media Include="src\assets\soundfx\sound_wind.wav" />
     <Media Include="src\assets\soundfx\sound_winddown.wav" />
     <Media Include="src\assets\soundfx\sound_windup.wav" />

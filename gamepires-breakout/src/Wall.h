@@ -1,8 +1,6 @@
 #pragma once
 #include <vector>
 
-#define WALL_TEXTURE_PATH "src/assets/textures/brick_white.png"
-
 std::vector<std::shared_ptr<Object>> wall;
 
 void initWall() {

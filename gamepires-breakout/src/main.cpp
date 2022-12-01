@@ -1,19 +1,38 @@
 #include <unordered_map>
+#include <map>
 
 #include "Game.h"
 
-std::shared_ptr<XMLParser> curLevel;
+#define BALL_DEFAULT_SPEED 0.5f
+#define DEFAULT_PLAYER_SPEED 0.4f
+#define MAX_PLAYER_LIVES 3
+#define PLAYER_BALL_CURVE -0.3f
+
+#define PLAYER_TEXTURE_PATH "src/assets/textures/player.png"
+#define WALL_TEXTURE_PATH "src/assets/textures/brick_white.png"
+#define BALL_TEXTURE_PATH "src/assets/textures/ball_white.png"
+#define BARRIER_HIT_SOUND "src/assets/soundfx/sound_hit_barrier.wav"
+#define PLAYER_HIT_SOUND "src/assets/soundfx/sound_player_hit.wav"
+#define LOSE_LIFE_SOUND "src/assets/soundfx/sound_lost.wav"
+#define LOSE_ALL_SOUND "src/assets/soundfx/sound_winddown.wav"
+#define START_LEVEL_SOUND "src/assets/soundfx/sound_windup.wav"
+
+int level = 0;
+int lives = MAX_PLAYER_LIVES;
+int points = 0;
 
 std::unordered_map<std::string, std::shared_ptr<Sprite>> loadedTextures = {{"", std::shared_ptr<Sprite>(nullptr)}};
 std::unordered_map<std::string, std::shared_ptr<Sound>> loadedSounds = {{"", std::shared_ptr<Sound>(nullptr)}};
+std::vector<std::shared_ptr<XMLParser>> levels;
+std::shared_ptr<XMLParser> curLevel;
 
 #include "Background.h"
 #include "Wall.h"
 #include "Bricks.h"
 #include "Player.h"
 #include "Ball.h"
-
-
+#include "Collisions.h"
+#include "Level.h"
 
 std::vector<std::string> texturePaths = {
 	"src/assets/textures/ball_blue.png",
@@ -40,49 +59,42 @@ std::vector<std::string> soundPaths = {
 	"src/assets/soundfx/sound_windup.wav"
 };
 
+std::vector<std::string> levelPaths = {
+	"src/assets/levels/level1.xml",
+	"src/assets/levels/leveltest.xml"
+};
+
 void main_program() {
-	curLevel.reset(new XMLParser("src/assets/levels/level1.xml"));
-	/*for(auto b : bricks) {
-		LOG_INFO("id:" << b.id << "|texture:" << b.texture << "|hitPoints:"
-				 << b.hitPoints << "|hitSound:" << b.hitSound << "|breakSound:"
-				 << b.breakSound << "|breakScore:" << b.breakScore);
-	}*/
+	LOG_OK("program successfully started");
 }
 
 void start() {
+	LOG_OK("everything is initialized");
 	for(std::string path : texturePaths) {
 		loadedTextures.insert({path, std::shared_ptr<Sprite>(new Sprite(path))});
 	}
 	for(std::string path : soundPaths) {
 		loadedSounds.insert({path, std::shared_ptr<Sound>(new Sound(path))});
 	}
+	for(std::string path : levelPaths) {
+		levels.push_back(std::shared_ptr<XMLParser>(new XMLParser(path)));
+	}
 
-	initBackground();
-	initWall();
-	initPlayer();
-	initBall();
-	initBricks();
+	startLevel();
 }
 
 void running(double delta) {
-
-	renderBackground();
-	renderWall();
-	renderPlayer(delta);
-	renderBall(delta);
-	renderBricks();
+	renderLevel(delta);
 }
 
 void exit() {
-	freeBackground();
-	freeBall();
-	freeWall();
-	freePlayer();
-	freeBricks();
+	restartLevel();
 
 	loadedSounds.clear();
 	loadedTextures.clear();
+	levels.clear();
 
 	curLevel.reset();
+	LOG_OK("program closed");
 }
 

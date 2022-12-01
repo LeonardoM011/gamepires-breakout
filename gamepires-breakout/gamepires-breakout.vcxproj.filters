@@ -98,6 +98,12 @@
     <ClInclude Include="src\Game\Brick\Brick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Collisions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\assets\test.bmp">
@@ -173,6 +179,7 @@
   <ItemGroup>
     <Xml Include="src\assets\level1.xml" />
     <Xml Include="src\assets\levels\level1.xml" />
+    <Xml Include="src\assets\levels\leveltest.xml" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="src\assets\soundfx\sound_bleep.wav">
@@ -203,6 +210,12 @@
       <Filter>Resource Files</Filter>
     </Media>
     <Media Include="src\assets\soundfx\sound_break1.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="src\assets\soundfx\sound_player_hit.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="src\assets\soundfx\sound_lost.wav">
       <Filter>Resource Files</Filter>
     </Media>
   </ItemGroup>
