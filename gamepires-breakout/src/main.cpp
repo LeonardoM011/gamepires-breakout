@@ -21,11 +21,14 @@
 int level = 0;
 int lives = MAX_PLAYER_LIVES;
 int points = 0;
+bool isWon = false;
 
 std::unordered_map<std::string, std::shared_ptr<Sprite>> loadedTextures = {{"", std::shared_ptr<Sprite>(nullptr)}};
 std::unordered_map<std::string, std::shared_ptr<Sound>> loadedSounds = {{"", std::shared_ptr<Sound>(nullptr)}};
 std::vector<std::shared_ptr<XMLParser>> levels;
 std::shared_ptr<XMLParser> curLevel;
+std::shared_ptr<Text> gameOver;
+std::shared_ptr<Text> gameStartText;
 
 #include "Background.h"
 #include "Wall.h"
@@ -62,9 +65,9 @@ std::vector<std::string> soundPaths = {
 };
 
 std::vector<std::string> levelPaths = {
-	"src/assets/levels/leveltesteasy.xml",
-	"src/assets/levels/leveltest.xml",
-	//"src/assets/levels/level1.xml"
+	"src/assets/levels/level1.xml",
+	"src/assets/levels/level2.xml",
+	"src/assets/levels/level3.xml"
 };
 
 void main_program() {
@@ -73,6 +76,8 @@ void main_program() {
 
 void start() {
 	LOG_OK("everything is initialized");
+	gameOver.reset(new Text("YOU WON, press enter to play again", SDL_Color(DEFAULT_FONT_COLOR)));
+	gameStartText.reset(new Text("Press LEFT MOUSE button to start", SDL_Color(DEFAULT_FONT_COLOR)));
 	for(std::string path : texturePaths) {
 		loadedTextures.insert({path, std::shared_ptr<Sprite>(new Sprite(path))});
 	}
@@ -87,7 +92,26 @@ void start() {
 }
 
 void running(double delta) {
-	renderLevel(delta);
+	if(isWon) {
+
+		gameOver->render(400, 350, 400, 52);
+
+		if(Input::isKeyPressed(SDL_SCANCODE_RETURN)) {
+			LOG_INFO("HELE");
+			level = 0;
+			lives = MAX_PLAYER_LIVES;
+			points = 0;
+			isWon = false;
+			restartLevel();
+			startLevel();
+		}
+	} else {
+		renderLevel(delta);
+		if(!isStarted) {
+			gameStartText->render(Game::windowWidth / 2 - gameStartText->getWidth() / 2,
+								  Game::windowHeight / 2 - gameStartText->getHeight() / 2);
+		}
+	}
 }
 
 void exit() {

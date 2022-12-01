@@ -15,6 +15,7 @@ public:
 		  int breakScore);
 	~Brick();
 	void hit() { m_HitPoints--; }
+	int getHitPoints() const { return m_HitPoints; }
 	bool didBreak() const { return m_HitPoints == 0; }
 	int getScore() const { return m_BreakScore; }
 	void playHitSound() const { m_HitSound->playSound(); }

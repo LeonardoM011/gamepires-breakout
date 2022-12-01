@@ -1,5 +1,5 @@
 <Level
-	RowCount="5"
+	RowCount="3"
 	ColumnCount="20"
 	RowSpacing="3"
 	ColumnSpacing="3"
@@ -37,10 +37,8 @@
 			HitSound="src/assets/soundfx/sound_hit_barrier.wav" />
 	</BrickTypes>
 	<Bricks>
-		_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-		_ S S S S S S S S S S S S S S S S S S _
-		_ S M M S S _ _ _ H H _ _ _ S S S M S _
-		_ S S S S S S S S S S S S S S S S S S _
-		_ _ _ _ _ S _ _ _ S S _ _ _ S _ _ _ _ _
+		H H H H H H H H H H H H H H H H H H H H
+		M M I I M M _ _ M M M M _ _ M M I I M M
+		S S S S S S S S S S S S S S S S S S S S
 	</Bricks>
 </Level>

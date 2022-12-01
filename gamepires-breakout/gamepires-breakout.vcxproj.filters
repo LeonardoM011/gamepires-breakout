@@ -184,11 +184,17 @@
     <Image Include="src\assets\textures\powerup.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="src\assets\backgrounds\background_wood.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="src\assets\level1.xml" />
     <Xml Include="src\assets\levels\level1.xml" />
     <Xml Include="src\assets\levels\leveltest.xml" />
+    <Xml Include="src\assets\levels\leveltesteasy.xml" />
+    <Xml Include="src\assets\levels\level3.xml" />
+    <Xml Include="src\assets\levels\level2.xml" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="src\assets\soundfx\sound_bleep.wav">
@@ -227,5 +233,9 @@
     <Media Include="src\assets\soundfx\sound_lost.wav">
       <Filter>Resource Files</Filter>
     </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="src\assets\fonts\SF Atarian System Bold.ttf" />
+    <Font Include="src\assets\fonts\SF Atarian System.ttf" />
   </ItemGroup>
 </Project>

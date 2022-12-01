@@ -155,6 +155,7 @@ xcopy /S /Q /Y /F "$(SolutionDir)vendors\sdl2-ttf\lib\SDL2_ttf.dll" "$(SolutionD
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\assets\backgrounds\background_mountains.png" />
+    <Image Include="src\assets\backgrounds\background_wood.png" />
     <Image Include="src\assets\ball_blue.png" />
     <Image Include="src\assets\ball_white.png" />
     <Image Include="src\assets\brick_blue.png" />
@@ -200,7 +201,10 @@ xcopy /S /Q /Y /F "$(SolutionDir)vendors\sdl2-ttf\lib\SDL2_ttf.dll" "$(SolutionD
   <ItemGroup>
     <Xml Include="src\assets\level1.xml" />
     <Xml Include="src\assets\levels\level1.xml" />
+    <Xml Include="src\assets\levels\level2.xml" />
+    <Xml Include="src\assets\levels\level3.xml" />
     <Xml Include="src\assets\levels\leveltest.xml" />
+    <Xml Include="src\assets\levels\leveltesteasy.xml" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="src\assets\soundfx\sound_bleep.wav" />
@@ -215,6 +219,10 @@ xcopy /S /Q /Y /F "$(SolutionDir)vendors\sdl2-ttf\lib\SDL2_ttf.dll" "$(SolutionD
     <Media Include="src\assets\soundfx\sound_wind.wav" />
     <Media Include="src\assets\soundfx\sound_winddown.wav" />
     <Media Include="src\assets\soundfx\sound_windup.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="src\assets\fonts\SF Atarian System Bold.ttf" />
+    <Font Include="src\assets\fonts\SF Atarian System.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

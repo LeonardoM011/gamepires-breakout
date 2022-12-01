@@ -67,10 +67,17 @@ void checkBallBorderCollision() {
 }
 
 void checkBallBrickCollision() {
-	if(bricks.empty()) {
+	bool doesHaveOnlyUnbreakableBricks = true;
+	for(auto b : bricks) {
+		if(b->getHitPoints() > -1) {
+			doesHaveOnlyUnbreakableBricks = false;
+		}
+	}
+
+	if(bricks.empty() || doesHaveOnlyUnbreakableBricks) {
 		if(++level >= levels.size()) {
 			// WIN
-			level = 0;
+			isWon = true;
 			return;
 		}
 		lives = MAX_PLAYER_LIVES;
@@ -79,6 +86,7 @@ void checkBallBrickCollision() {
 		startLevel();
 		return;
 	}
+
 
 	float left = ball->getX();
 	float right = ball->getX() + ball->getWidth();

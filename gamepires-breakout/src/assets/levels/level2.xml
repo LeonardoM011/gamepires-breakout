@@ -1,9 +1,9 @@
 <Level
-	RowCount="5"
+	RowCount="4"
 	ColumnCount="20"
-	RowSpacing="3"
-	ColumnSpacing="3"
-	BackgroundTexture="src/assets/backgrounds/background_mountains.png">
+	RowSpacing="10"
+	ColumnSpacing="5"
+	BackgroundTexture="src/assets/backgrounds/background_wood.png">
 	<BrickTypes>
 		<!-- Soft Brick -->
 		<BrickType
@@ -38,9 +38,8 @@
 	</BrickTypes>
 	<Bricks>
 		_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-		_ S S S S S S S S S S S S S S S S S S _
-		_ S M M S S _ _ _ H H _ _ _ S S S M S _
-		_ S S S S S S S S S S S S S S S S S S _
-		_ _ _ _ _ S _ _ _ S S _ _ _ S _ _ _ _ _
+		_ _ S S S S S S S S S S S S S S S S _ _
+		_ M _ _ M M _ _ M I I M _ _ M M _ _ M _
+		_ S I I S S S S S S S S S S S S I I S S
 	</Bricks>
 </Level>
